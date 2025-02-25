@@ -25,7 +25,7 @@ test("Deve calcular a fatura", async () => {
             return new Date("2022-01-01T10:00:00");
         }
     }
-    const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway, today);
+    const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway, clock);
     const output = await calculateInvoice.execute("1234");
     expect(output.total).toBe(2300);
 })
