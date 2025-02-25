@@ -1,20 +1,15 @@
 import CalculateInvoice from "./CalculateInvoice";
-import express from "express";
+import HttpServer from "./HttpServer";
 
 
 export default class InvoiceController {
     constructor(
+        readonly httpServer: HttpServer,
         readonly calculateInvoice: CalculateInvoice
     ){
-        const app = express();
-        app.get("/card/:cardNumber/invoices", async (req, res) => {
-            const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway);
-            const total = await calculateInvoice.execute(req.params.cardNumber);
-            res.json({
-                total
-            })
+        httpServer.register("get", "/card/:cardNumber/invoices", async (params: any, body: any) => {
+            const total = await calculateInvoice.execute(params.cardNumber);
+            return total;
         });
-
-        app.listen(3000);
     }
 }

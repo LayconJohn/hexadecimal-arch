@@ -17,6 +17,6 @@ export default class CalculateInvoice {
         const transactions = await this.transactionDAO.getTransactions(cardNumber, month, year);
         const invoice = new Invoice(transactions, currencies)
         const total = invoice.getTotal()
-        return total;
+        return {total};
     }
 }
