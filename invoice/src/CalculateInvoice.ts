@@ -1,18 +1,21 @@
 import pgp from "pg-promise"
 import axios from "axios";
 import TransactionDAO from "./TransactionDAO";
+import CurrencyGateway from "./CurrencyGateway";
 
 export default class CalculateInvoice {
     constructor(
-        readonly transactionDAO: TransactionDAO
+        readonly transactionDAO: TransactionDAO,
+        readonly currencyGateway: CurrencyGateway
     ){}
 
     async execute(cardNumber: string){
         const today = new Date();
         const month = today.getMonth() + 1;
         const year = today.getFullYear();
-        const response = await axios.get("http://localhost:3001/currencies");
-        const currencies = response.data;
+        const currencies = await this.currencyGateway.getCurrencies();
+        // const response = await axios.get("http://localhost:3001/currencies");
+        // const currencies = response.data;
 
         const transactions = await this.transactionDAO.getTransactions(cardNumber, month, year);
         // const connection = pgp()("postgres://postgres:123456@locahost:5432/app");
