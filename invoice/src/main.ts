@@ -5,14 +5,15 @@ import AxiosAdapter from "./AxiosAdaper";
 import PgPromiseAdapter from "./PgPromiseAdapter";
 import InvoiceController from "./InvoicerController";
 import ExpressAdapter from "./ExpressAdapter";
+import RealClock from "./RealClock";
 
-const today = new Date();
+const clock = new RealClock();
 const connection = new PgPromiseAdapter()
 const transactionDAO = new TransactionDAODatabase(connection);
 const httpClient = new AxiosAdapter();
 const baseUrl = "http://localhost:3001"
 const currencyGateway = new CurrencyGatewayHttp(baseUrl, httpClient);
-const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway, today);
+const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway, clock);
 const httpServer = new ExpressAdapter()
 new InvoiceController(httpServer, calculateInvoice)
 httpServer.listen(3000)
