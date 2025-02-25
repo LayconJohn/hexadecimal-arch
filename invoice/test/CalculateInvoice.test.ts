@@ -19,7 +19,8 @@ test("Deve calcular a fatura", async () => {
             }
         }
     }
-    const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway);
+    const today = new Date();
+    const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway, today);
     const output = await calculateInvoice.execute("1234");
     expect(output.total).toBe(2300);
 })

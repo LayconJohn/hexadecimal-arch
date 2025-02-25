@@ -6,13 +6,13 @@ import Invoice from "./Invoice";
 export default class CalculateInvoice {
     constructor(
         readonly transactionDAO: TransactionDAO,
-        readonly currencyGateway: CurrencyGateway
+        readonly currencyGateway: CurrencyGateway,
+        readonly today: Date
     ){}
 
     async execute(cardNumber: string){
-        const today = new Date();
-        const month = today.getMonth() + 1;
-        const year = today.getFullYear();
+        const month = this.today.getMonth() + 1;
+        const year = this.today.getFullYear();
         const currencies = await this.currencyGateway.getCurrencies();
         const transactions = await this.transactionDAO.getTransactions(cardNumber, month, year);
         const invoice = new Invoice(transactions, currencies)

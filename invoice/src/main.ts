@@ -6,12 +6,13 @@ import PgPromiseAdapter from "./PgPromiseAdapter";
 import InvoiceController from "./InvoicerController";
 import ExpressAdapter from "./ExpressAdapter";
 
+const today = new Date();
 const connection = new PgPromiseAdapter()
 const transactionDAO = new TransactionDAODatabase(connection);
 const httpClient = new AxiosAdapter();
 const baseUrl = "http://localhost:3001"
 const currencyGateway = new CurrencyGatewayHttp(baseUrl, httpClient);
-const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway);
+const calculateInvoice = new CalculateInvoice(transactionDAO, currencyGateway, today);
 const httpServer = new ExpressAdapter()
 new InvoiceController(httpServer, calculateInvoice)
 httpServer.listen(3000)
