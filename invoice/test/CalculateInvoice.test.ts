@@ -1,7 +1,7 @@
-import CalculateInvoice from "../src/CalculateInvoice";
-import Clock from "../src/Clock";
-import CurrencyGateway from "../src/CurrencyGateway";
-import TransactionDAO from "../src/TransactionDAO";
+import CalculateInvoice from "../src/application/usecase/CalculateInvoice";
+import Clock from "../src/domain/Clock";
+import CurrencyGateway from "../src/application/CurrencyGateway";
+import TransactionDAO from "../src/application/TransactionDAO";
 
 test("Deve calcular a fatura", async () => {
     const transactionDAO: TransactionDAO = {

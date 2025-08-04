@@ -1,4 +1,4 @@
-import Clock from "./Clock";
+import Clock from "../domain/Clock";
 
 export default class RealClock implements Clock {
     getToday(): Date {

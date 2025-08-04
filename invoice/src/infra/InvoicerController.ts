@@ -1,5 +1,5 @@
-import CalculateInvoice from "./CalculateInvoice";
-import HttpServer from "./HttpServer";
+import CalculateInvoice from "../application/usecase/CalculateInvoice";
+import HttpServer from "../application/HttpServer";
 
 
 export default class InvoiceController {

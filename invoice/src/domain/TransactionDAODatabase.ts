@@ -1,5 +1,5 @@
-import Connection from "./Connection";
-import TransactionDAO from "./TransactionDAO";
+import Connection from "../application/Connection";
+import TransactionDAO from "../application/TransactionDAO";
 
 export default class TransactionDAODatabase implements TransactionDAO{
 

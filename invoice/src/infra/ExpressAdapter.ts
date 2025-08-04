@@ -1,4 +1,4 @@
-import HttpServer from "./HttpServer";
+import HttpServer from "../application/HttpServer";
 import express from "express";
 
 

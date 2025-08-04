@@ -1,8 +1,8 @@
 
-import TransactionDAO from "./TransactionDAO";
-import CurrencyGateway from "./CurrencyGateway";
+import TransactionDAO from "../TransactionDAO";
+import CurrencyGateway from "../CurrencyGateway";
 import Invoice from "./Invoice";
-import Clock from "./Clock";
+import Clock from "../../domain/Clock";
 
 export default class CalculateInvoice {
     constructor(

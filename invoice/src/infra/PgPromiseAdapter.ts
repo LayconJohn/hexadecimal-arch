@@ -1,4 +1,4 @@
-import Connection from "./Connection";
+import Connection from "../application/Connection";
 import pgp from "pg-promise"
 
 export default class PgPromiseAdapter implements Connection {

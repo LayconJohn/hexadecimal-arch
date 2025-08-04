@@ -1,4 +1,4 @@
-import Invoice from "../src/Invoice";
+import Invoice from "../src/application/usecase/Invoice";
 
 test("Deve criar uma fatura", () => {
     const transactions = [

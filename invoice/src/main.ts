@@ -1,11 +1,11 @@
-import CalculateInvoice from "./CalculateInvoice";
-import TransactionDAODatabase from "./TransactionDAODatabase";
-import CurrencyGatewayHttp from "./CurrencyGatewayHttp";
-import AxiosAdapter from "./AxiosAdaper";
-import PgPromiseAdapter from "./PgPromiseAdapter";
-import InvoiceController from "./InvoicerController";
-import ExpressAdapter from "./ExpressAdapter";
-import RealClock from "./RealClock";
+import CalculateInvoice from "./application/usecase/CalculateInvoice";
+import TransactionDAODatabase from "./domain/TransactionDAODatabase";
+import CurrencyGatewayHttp from "./infra/CurrencyGatewayHttp";
+import AxiosAdapter from "./infra/AxiosAdaper";
+import PgPromiseAdapter from "./infra/PgPromiseAdapter";
+import InvoiceController from "./infra/InvoicerController";
+import ExpressAdapter from "./infra/ExpressAdapter";
+import RealClock from "./infra/RealClock";
 
 const clock = new RealClock();
 const connection = new PgPromiseAdapter()
